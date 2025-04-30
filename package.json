@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "shadow-cljs": "^3.0.3",
+    "snabbdom": "3.5.1"
+  }
+}

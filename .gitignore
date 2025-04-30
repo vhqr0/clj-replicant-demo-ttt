@@ -1,0 +1,11 @@
+.cpcache
+.nrepl-*
+.cljs_node_repl
+.dir-locals.el
+.clj-kondo
+.lsp
+.shadow-cljs
+node_modules
+
+/resources/public/app-js
+/resources/public/portfolio-js
