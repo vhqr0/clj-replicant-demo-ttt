@@ -37,3 +37,15 @@
      [:div.row
       (for [cell row]
         (render-cell cell))])])
+
+(def player->mark
+  {:x mark-x :o mark-o})
+
+(defn game->ui-data
+  [{:keys [size tics]}]
+  {:rows
+   (for [y (range size)]
+     (for [x (range size)]
+       (if-let [player (get tics [y x])]
+         {:content (player->mark player)}
+         {:clickable? true :on-click [:tic y x]})))})

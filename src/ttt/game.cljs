@@ -1,15 +1,21 @@
 (ns ttt.game)
 
 (defn create-game [{:keys [size]}]
-  {:next-player :x
-   :size size})
+  {:size size
+   :next-player :x})
 
 (def next-player
   {:x :o :o :x})
 
-(defn tic [game y x]
+(defn valid-tic?
+  [{:keys [size tics]} y x]
+  (and (->> [y x] (every? #(<= 0 % size)))
+       (not (contains? tics [y x]))))
+
+(defn tic
+  [game y x]
   (let [player (:next-player game)]
-    (if (get-in game [:tics [y x]])
+    (if-not (valid-tic? game y x)
       game
       (-> game
           (assoc-in [:tics [y x]] player)
